@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section class="tm-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-center">
+                <h2 class="tm-gold-text tm-title">Add new post</h2>
+                {% if user.is_authenticated %}
+
+<form method= "POST">
+    {% csrf_token %}
+    {{form.author|as_crispy_field}}
+    {{form.title|as_crispy_field}}
+    {{form.text|as_crispy_field}}
+    
+    {% comment %}
+    {{form.created_date|as_crispy_field}}
+    {{form.published_date|as_crispy_field}}
+    {% endcomment %}
+    {% end %}
+
+    <!-- <div class="form-group">
+        <label for="title"> {{ form.title.name }} </label>
+{{ form.title }}
+</div>
+<div class="form-group">
+    <label for="name"> {{ form.author.name }} </label>  
+{{ form.author }}
+</div>
+<div class="form-control">
+    <textarea class="form-control"  rows="3" placeholder=" Description"></textarea>
+</div> -->
+<div class="button">
+    <button type="submit">Submit </button>
+</div>
+
+</form>  
+</div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
